@@ -1,6 +1,6 @@
 # Mini LLM Inference Engine
 
-[![Tests](https://github.com/yourname/mini-llm-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/yourname/mini-llm-engine/actions)
+[![Tests](https://github.com/liangqianxing/mini-llm-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/liangqianxing/mini-llm-engine/actions)
 ![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
 
 > A from-scratch implementation of the core optimizations in modern LLM serving systems —  
@@ -151,7 +151,7 @@ With acceptance rate α and K drafts: expected output = `(1 - α^(K+1)) / (1 - �
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/yourname/mini-llm-engine
+git clone https://github.com/liangqianxing/mini-llm-engine
 cd mini-llm-engine
 pip install -e ".[viz]"       # +matplotlib for plots
 
