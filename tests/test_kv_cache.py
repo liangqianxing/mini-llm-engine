@@ -58,8 +58,9 @@ class TestKVCacheManager:
         seq = make_seq(0, prompt_len=3, block_size=4)
         mgr.allocate(seq)
         assert mgr.can_append_slot(seq)
-        new_block = mgr.append_slot(seq)
-        assert new_block is False  # 不需要新物理块
+        new_block_allocated, cow_happened = mgr.append_slot(seq)
+        assert new_block_allocated is False  # 不需要新物理块
+        assert cow_happened is False
 
     def test_append_slot_needs_new_block(self):
         mgr = KVCacheManager(num_blocks=16, block_size=4)
@@ -67,8 +68,8 @@ class TestKVCacheManager:
         seq = make_seq(0, prompt_len=4, block_size=4)
         mgr.allocate(seq)
         assert seq.needs_new_block()
-        new_block = mgr.append_slot(seq)
-        assert new_block is True  # 分配了新物理块
+        new_block_allocated, cow_happened = mgr.append_slot(seq)
+        assert new_block_allocated is True  # 分配了新物理块
 
     def test_get_block_table_returns_ids(self):
         mgr = KVCacheManager(num_blocks=16, block_size=4)
